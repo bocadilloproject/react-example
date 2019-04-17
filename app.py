@@ -15,8 +15,7 @@ templates = Templates(app, directory=TEMPLATES_DIR)
 
 @app.route("/")
 async def index(req, res):
-    data = {"message": "hello world"}
-    res.html = await templates.render("index.html", data=data)
+    res.html = await templates.render("index.html")
 
 
 if __name__ == "__main__":
