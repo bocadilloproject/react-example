@@ -1,6 +1,6 @@
 <p align="center">
-<img src="https://github.com/bocadilloproject/react-example/raw/master/react-frontend/src/bocadillo.png" height="200px"/>
-<img src="https://github.com/bocadilloproject/react-example/raw/master/react-frontend/src/logo.svg?sanitize=true" height="200px"/>
+<img src="https://github.com/bocadilloproject/react-example/raw/master/react-app/src/bocadillo.png" height="200px"/>
+<img src="https://github.com/bocadilloproject/react-example/raw/master/react-app/src/logo.svg?sanitize=true" height="200px"/>
 </p>
 
 This repository contains an example of a [Bocadillo](https://github.com/bocadilloproject/bocadillo) server used in conjunction with a React frontend.
@@ -38,7 +38,7 @@ python app.py
 In another terminal, run React's development server on its default port of 3000:
 
 ```bash
-cd react-frontend
+cd react-app
 yarn start  # or npm start
 ```
 
@@ -58,7 +58,7 @@ Any requests that fail on port 3000 will be retried on port 8000 (where the Boca
 
 create-react-app can build production ready code, which compiles and minifies the html, JavaScript, and css:
 ```
-cd react-frontend
+cd react-app
 yarn build  # or npm build
 ```
 
