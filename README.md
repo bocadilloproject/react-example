@@ -27,14 +27,15 @@ yarn install  # or npm install
 
 Now that you have dependencies installed, you can start development.
 
-You can use `create-react-app`'s hot-reloading functionality with Bocadillo, which allows you to make changes and instantly see them in the browser.
 
-In one terminal, run Bocadillo on its default port of 8000 to expose its API endpoints to the React app:
+### Run the Server
+In one terminal, run the Bocadillo app with the uvicorn server. This will run on port 8000 and expose its API endpoints to the React app. Pass the `--reload` flag so that changes made to the Python code automatically reload and are available to the React app.
 
 ```bash
-python app.py
+uvicorn app:app --reload
 ```
 
+### Run the React Application
 In another terminal, run React's development server on its default port of 3000:
 
 ```bash
@@ -51,8 +52,11 @@ It should look like this:
 </a>
 </p>
 
+#### Proxy to Bocadillo in Development
+Any requests that do not have `text/html` in their `Accept` header will be proxied to Bocadillo. To learn more about how requests are proxied with create-react-app, see its [documentation](https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development).
 
-Any requests that fail on port 3000 will be retried on port 8000 (where the Bocadillo app is being served) due to the `proxy` key in`react-app/package.json`. To learn more about how requests are proxied with create-react-app, see its [documentation](https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development).
+#### Hot Reloding
+Any changes to the frontend code will cause the browser to reload immediately. Changes to the server code will be available immediately, but you may have to refresh the browser yourself depending on when your React App makes requests to the Bocadillo server.
 
 ## Building
 
@@ -68,7 +72,7 @@ To learn more, see create-react-app's [documentation](https://facebook.github.io
 You can now serve the whole React app and all of its static assets with Bocadillo:
 
 ```bash
-python app.py
+uvicorn app:app
 ```
 
 Now open http://localhost:8000 to see your production-ready app!

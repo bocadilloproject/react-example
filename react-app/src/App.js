@@ -1,19 +1,38 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
+import axios from "axios";
 import bocadillo_logo from "./bocadillo.png";
 import "./App.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.updateBocadilloMessage = this.updateBocadilloMessage.bind(this);
+    this.state = { bocadilloMessage: "fetching..." };
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={bocadillo_logo} className="App-logo" alt="bocadillo logo" />
-          <img src={logo} className="App-logo" alt="react logo" />
+          <div>
+            <img
+              src={bocadillo_logo}
+              className="App-logo"
+              alt="bocadillo logo"
+            />
+            <img src={logo} className="App-logo" alt="react logo" />
+          </div>
           <p>Hello from Bocadillo and React!</p>
+          <p>A message from the Bocadillo server: </p>
+          <p className="italic">"{this.state.bocadilloMessage}"</p>
+          <button className="App-button" onClick={this.updateBocadilloMessage}>
+            Update Message
+          </button>
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Edit <code>react-app/src/App.js</code> or <code>app.py</code> and
+            save to reload.
           </p>
+
           <a
             className="App-link"
             href="https://github.com/bocadilloproject/bocadillo"
@@ -34,6 +53,13 @@ class App extends Component {
         </header>
       </div>
     );
+  }
+  componentDidMount() {
+    this.updateBocadilloMessage();
+  }
+  async updateBocadilloMessage() {
+    const bocadilloResponse = await axios.get("/api/message");
+    this.setState({ bocadilloMessage: bocadilloResponse.data.message });
   }
 }
 

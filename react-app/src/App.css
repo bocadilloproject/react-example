@@ -4,7 +4,7 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  height: 30vmin;
   pointer-events: none;
 }
 
@@ -23,6 +23,21 @@
   color: #61dafb;
 }
 
+.App-button {
+  color: #61dafb;
+  border: 2px solid #61dafb;
+  background-color: transparent;
+  border-radius: 5px;
+  line-height: 2em;
+  transition: 0.5s;
+}
+
+.App-button:hover {
+  color: white;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -30,4 +45,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.italic {
+  font-style: italic;
 }
