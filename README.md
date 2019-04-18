@@ -8,7 +8,7 @@ This repository contains an example of a [Bocadillo](https://github.com/bocadill
 The frontend for this example repository was bootstrapped with the popular and convenient [create-react-app](https://facebook.github.io/create-react-app/). It has lots of excellent [documentation](https://facebook.github.io/create-react-app/docs/getting-started), so if you want to do something not documented in this repository, they will have you covered. React applications not built with create-react-app will also work fine with Bocadillo!
 
 ## Getting Started
-Clone this repository, then install dependencies.
+First clone this repository, then install dependencies.
 
 Let's install the Python dependencies first. You might want to do this inside a virtual environment.
 
@@ -39,7 +39,7 @@ In another terminal, run React's development server on its default port of 3000:
 
 ```bash
 cd react-app
-yarn start  # or npm start
+yarn start  # or npm run start
 ```
 
 Now open `http://localhost:3000` to see your React app.
