@@ -29,7 +29,7 @@ class App extends Component {
             Update Message
           </button>
           <p>
-            Edit <code>react-app/src/App.js</code> or <code>app.py</code> and
+            Edit <code>react-app/src/App.js</code> or <code>server/app.py</code> and
             save to reload.
           </p>
 
