@@ -24,13 +24,13 @@ class App extends Component {
           </div>
           <p>Hello from Bocadillo and React!</p>
           <p>A message from the Bocadillo server: </p>
-          <p className="italic">"{this.state.bocadilloMessage}"</p>
+          <p className="italic">{this.state.bocadilloMessage}</p>
           <button className="App-button" onClick={this.updateBocadilloMessage}>
             Update Message
           </button>
           <p>
-            Edit <code>react-app/src/App.js</code> or <code>server/app.py</code> and
-            save to reload.
+            Edit <code>react-app/src/App.js</code> or <code>server/app.py</code>{" "}
+            and save to reload.
           </p>
 
           <a
@@ -58,8 +58,13 @@ class App extends Component {
     this.updateBocadilloMessage();
   }
   async updateBocadilloMessage() {
-    const bocadilloResponse = await axios.get("/api/message");
-    this.setState({ bocadilloMessage: bocadilloResponse.data.message });
+    try {
+      const bocadilloResponse = await axios.get("/api/message");
+      this.setState({ bocadilloMessage: bocadilloResponse.data.message });
+    } catch (err) {
+      this.setState({ bocadilloMessage: err.message });
+      console.error(err);
+    }
   }
 }
 
