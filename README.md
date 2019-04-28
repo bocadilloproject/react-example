@@ -15,6 +15,7 @@ First clone this repository, then install dependencies.
 Install dependencies for [tartiflette](https://tartiflette.io/docs/tutorial/install-tartiflette), the engine that Bocadillo uses for its GraphQL server.
 
 When you've finished that, install Python dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -56,6 +57,46 @@ Any requests that do not have `text/html` in their `Accept` header will be proxi
 #### Hot Reloding
 
 Any changes to the frontend code will cause the browser to reload immediately. Changes to the server code will be available immediately, but you may have to refresh the browser yourself depending on when your React App makes requests to the Bocadillo server.
+
+## Experiment with [GraphiQL](https://github.com/graphql/graphiql)
+GraphiQL is a graphical interactive in-browser GraphQL IDE.
+
+This examples serves GraphiQL http://127.0.0.1:8000/graphql when the DEBUG setting is `True`. To set DEBUG to true, create a file named `.env` at the root of the project:
+```
+# .env
+# Don't commit this to source control.
+# Eg. Include ".env" in your `.gitignore` file.
+DEBUG=True
+```
+
+Now start uvicorn again:
+```bash
+uvicorn server.asgi:app --reload
+```
+
+Open http://127.0.0.1:8000/graphql, and try entering some GraphQL queries:
+```graphql
+{
+  recipes {
+    name
+  }
+}
+```
+
+```
+{
+  recipes {
+    id
+    name
+    cookingTime
+    ingredients {
+      name
+      quantity
+    }
+  }
+}
+```
+
 
 ## Building
 

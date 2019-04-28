@@ -2,6 +2,7 @@ from tartiflette import Resolver, Engine
 from tartiflette_starlette import TartifletteApp
 import os
 from .data import RECIPES, INGREDIENTS
+from .settings import DEBUG
 
 # Create a Tartiflette resolver for the `recipes` field.
 @Resolver("Query.recipes")
@@ -33,4 +34,4 @@ async def resolve_ingredients(parent, args, ctx, info):
 # Use schemas defined in the sdl directory.
 # See: https://tartiflette.io/docs/api/engine
 sdl = os.path.dirname(os.path.abspath(__file__)) + "/sdl"
-app = TartifletteApp(sdl=sdl, path="")
+app = TartifletteApp(sdl=sdl, path="", graphiql=DEBUG)
