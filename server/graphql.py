@@ -33,4 +33,4 @@ async def resolve_ingredients(parent, args, ctx, info):
 # Use schemas defined in the sdl directory.
 # See: https://tartiflette.io/docs/api/engine
 sdl = os.path.dirname(os.path.abspath(__file__)) + "/sdl"
-app = TartifletteApp(sdl=sdl, path="/graphql")
+app = TartifletteApp(sdl=sdl, path="")

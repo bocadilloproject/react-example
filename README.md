@@ -1,9 +1,10 @@
 <p align="center">
 <img src="https://github.com/bocadilloproject/react-example/raw/master/react-app/src/bocadillo.png" height="200px"/>
 <img src="https://github.com/bocadilloproject/react-example/raw/master/react-app/src/logo.svg?sanitize=true" height="200px"/>
+<img src="https://github.com/bocadilloproject/react-example/raw/react-apollo/react-app/src/graphql.png" height="200px"/>
 </p>
 
-This repository contains an example of a [Bocadillo](https://github.com/bocadilloproject/bocadillo) server used in conjunction with a React frontend. The Bocadillo server has a GraphQL endpoint, and the frontend uses React Apollo, a GraphQL library that integrates nicely with React.
+This repository contains an example of a [Bocadillo](https://github.com/bocadilloproject/bocadillo) server used in conjunction with a React frontend. The Bocadillo server has a GraphQL endpoint, and the frontend uses React Apollo, a GraphQL library that works with React.
 
 The frontend for this example repository was bootstrapped with the popular and convenient [create-react-app](https://facebook.github.io/create-react-app/). It has lots of excellent [documentation](https://facebook.github.io/create-react-app/docs/getting-started), so if you want to do something not documented in this repository, they will have you covered. React applications not built with create-react-app will also work fine with Bocadillo!
 
@@ -47,14 +48,6 @@ yarn start  # or npm start
 ```
 
 Now open `http://localhost:3000` to see your React app.
-
-It should look like this:
-
-<p align="center">
-<a href="https://github.com/bocadilloproject/react-example/raw/master/screenshot.png">
-<img src="https://github.com/bocadilloproject/react-example/raw/master/screenshot.png"/>
-</a>
-</p>
 
 #### Proxy to Bocadillo in Development
 

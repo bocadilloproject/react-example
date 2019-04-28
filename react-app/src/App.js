@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import bocadillo_logo from "./bocadillo.png";
+import graphql_logo from "./graphql.png";
 import "./App.css";
 
 import gql from "graphql-tag";
@@ -17,6 +18,7 @@ function Ingredient(props) {
 function Recipe(props) {
   const recipe_query = gql`
     {
+      # fetch all fields associated with the recipe
       recipe(id: $id) {
         id
         name
@@ -56,6 +58,7 @@ function Recipe(props) {
 function Recipes(props) {
   const recipes_query = gql`
     {
+      # only fetch id and name, not other fields
       recipes {
         id
         name
@@ -66,10 +69,10 @@ function Recipes(props) {
     <Query query={recipes_query}>
       {({ loading, error, data }) => {
         if (loading) {
-          return "Loading...";
+          return <p>Loading...</p>;
         }
         if (error) {
-          return `Error: ${error.message}`;
+          return <p>Error: {error.message}</p>;
         }
         return data.recipes.map(recipe => {
           const { name, id } = recipe;
@@ -104,6 +107,7 @@ class App extends Component {
               alt="bocadillo logo"
             />
             <img src={logo} className="App-logo" alt="react logo" />
+            <img src={graphql_logo} className="App-logo" alt="graphql logo" />
           </div>
           <p>Hello from Bocadillo, React, and React Apollo!</p>
 
