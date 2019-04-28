@@ -1,14 +1,97 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-import axios from "axios";
 import bocadillo_logo from "./bocadillo.png";
 import "./App.css";
+
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
+
+function Ingredient(props) {
+  const { name, quantity, type } = props;
+  return (
+    <p>
+      {name}, {quantity} {type.toLowerCase()}
+    </p>
+  );
+}
+function Recipe(props) {
+  const recipe_query = gql`
+    {
+      recipe(id: $id) {
+        id
+        name
+        cookingTime
+        ingredients {
+          name
+          quantity
+          type
+        }
+      }
+    }
+  `;
+  return (
+    <Query query={recipe_query} variables={{ id: props.id }}>
+      {({ loading, error, data }) => {
+        if (loading) {
+          return "Loading...";
+        }
+        if (error) {
+          return `Error: ${error.message}`;
+        }
+        const { name, cookingTime, ingredients } = data.recipe;
+        return (
+          <div>
+            <h3>{name}</h3>
+            Cooking time: {cookingTime} minutes
+            <h4>Ingredients</h4>
+            {ingredients.map(i => (
+              <Ingredient {...i} key={i.name} />
+            ))}
+          </div>
+        );
+      }}
+    </Query>
+  );
+}
+function Recipes(props) {
+  const recipes_query = gql`
+    {
+      recipes {
+        id
+        name
+      }
+    }
+  `;
+  return (
+    <Query query={recipes_query}>
+      {({ loading, error, data }) => {
+        if (loading) {
+          return "Loading...";
+        }
+        if (error) {
+          return `Error: ${error.message}`;
+        }
+        return data.recipes.map(recipe => {
+          const { name, id } = recipe;
+          return (
+            <button
+              className="recipe-button"
+              key={id}
+              onClick={() => props.onClick(id)}
+            >
+              {name}
+            </button>
+          );
+        });
+      }}
+    </Query>
+  );
+}
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.updateBocadilloMessage = this.updateBocadilloMessage.bind(this);
-    this.state = { bocadilloMessage: "fetching..." };
+    this.state = { recipeId: null };
   }
   render() {
     return (
@@ -22,12 +105,9 @@ class App extends Component {
             />
             <img src={logo} className="App-logo" alt="react logo" />
           </div>
-          <p>Hello from Bocadillo and React!</p>
-          <p>A message from the Bocadillo server: </p>
-          <p className="italic">{this.state.bocadilloMessage}</p>
-          <button className="App-button" onClick={this.updateBocadilloMessage}>
-            Update Message
-          </button>
+          <p>Hello from Bocadillo, React, and React Apollo!</p>
+
+          <p>This is an example that incorporates GraphQL.</p>
           <p>
             Edit <code>react-app/src/App.js</code> or <code>server/app.py</code>{" "}
             and save to reload.
@@ -51,20 +131,16 @@ class App extends Component {
             Learn React
           </a>
         </header>
+        <div className="graphql-example">
+          <h2>Choose a Recipe</h2>
+          Recipes are fetched with a React Apollo call to Bocadillo's GraphQL
+          endpoint.
+          <p />
+          <Recipes onClick={id => this.setState({ recipeId: id })} />
+          {this.state.recipeId ? <Recipe id={this.state.recipeId} /> : null}
+        </div>
       </div>
     );
-  }
-  componentDidMount() {
-    this.updateBocadilloMessage();
-  }
-  async updateBocadilloMessage() {
-    try {
-      const bocadilloResponse = await axios.get("/api/message");
-      this.setState({ bocadilloMessage: bocadilloResponse.data.message });
-    } catch (err) {
-      this.setState({ bocadilloMessage: err.message });
-      console.error(err);
-    }
   }
 }
 

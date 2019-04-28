@@ -1,10 +1,12 @@
+from .graphql import app as graphql_app
 import time
-
 from bocadillo import App, Templates
 
 from . import settings
 
+
 app = App()
+app.mount("/graphql", graphql_app)
 templates = Templates(app, directory=settings.TEMPLATES_DIR)
 
 
@@ -12,9 +14,3 @@ templates = Templates(app, directory=settings.TEMPLATES_DIR)
 async def index(req, res):
     res.html = await templates.render("index.html")
 
-
-@app.route("/api/message")
-async def api(req, res):
-    now = time.strftime("%I:%M:%S %p")
-    message = f"Hello from the Bocadillo server! The time is {now}."
-    res.json = {"message": message}
