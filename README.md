@@ -61,7 +61,7 @@ It should look like this:
 
 Any requests that do not have `text/html` in their `Accept` header will be proxied to Bocadillo. To learn more about how requests are proxied with create-react-app, see its [documentation](https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development).
 
-#### Hot Reloding
+#### Hot Reloading
 
 Any changes to the frontend code will cause the browser to reload immediately. Changes to the server code will be available immediately, but you may have to refresh the browser yourself depending on when your React App makes requests to the Bocadillo server.
 
