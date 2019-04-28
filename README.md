@@ -61,7 +61,7 @@ Any changes to the frontend code will cause the browser to reload immediately. C
 ## Experiment with [GraphiQL](https://github.com/graphql/graphiql)
 GraphiQL is a graphical interactive in-browser GraphQL IDE.
 
-This examples serves GraphiQL http://127.0.0.1:8000/graphql when the DEBUG setting is `True`. To set DEBUG to true, create a file named `.env` at the root of the project:
+This examples serves GraphiQL at http://127.0.0.1:8000/graphql when the DEBUG setting is `True`. To set DEBUG to true, create a file named `.env` at the root of the project:
 ```
 # .env
 # Don't commit this to source control.
