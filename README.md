@@ -4,7 +4,7 @@
 <img src="https://github.com/bocadilloproject/react-example/raw/react-apollo/react-app/src/graphql.png" height="200px"/>
 </p>
 
-This repository contains an example of a [Bocadillo](https://github.com/bocadilloproject/bocadillo) server used in conjunction with a React frontend. The Bocadillo server has a GraphQL endpoint, and the frontend uses React Apollo, a GraphQL library that works with React.
+This repository contains an example of a [Bocadillo](https://github.com/bocadilloproject/bocadillo) server used in conjunction with a React frontend. The Bocadillo server has a GraphQL endpoint built with [tartiflette-starlette](https://github.com/tartiflette/tartiflette-starlette), and the frontend uses React Apollo, a GraphQL library that works with React.
 
 The frontend for this example repository was bootstrapped with the popular and convenient [create-react-app](https://facebook.github.io/create-react-app/). It has lots of excellent [documentation](https://facebook.github.io/create-react-app/docs/getting-started), so if you want to do something not documented in this repository, they will have you covered. React applications not built with create-react-app will also work fine with Bocadillo!
 
