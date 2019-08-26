@@ -1,5 +1,3 @@
-# Dictionnary which contains the ingredients based on the
-# Recipe ID as key.
 INGREDIENTS = {
     1: [
         {"name": "potato", "quantity": 10, "type": "UNIT"},

@@ -9,6 +9,9 @@ from .settings import DEBUG
 async def resolve_recipes(parent, args, ctx, info):
     return RECIPES
 
+# @Resolver("Query.hello")
+# async def hello(parent, args, ctx, info):
+#     return "Hello, GraphQL!"
 
 # Create a Tartiflette resolver for the `recipe` field.
 @Resolver("Query.recipe")
@@ -20,6 +23,9 @@ async def resolve_recipe(parent, args, ctx, info):
 
     return recipe[0]
 
+@Resolver("Query.hello")
+async def hello(parent, args, ctx, info):
+    return "Hello, GraphQL!"
 
 # Create a Tartiflette resolver for the `ingredients` field,
 # which corresponds to a recipe.
@@ -34,4 +40,4 @@ async def resolve_ingredients(parent, args, ctx, info):
 # Use schemas defined in the sdl directory.
 # See: https://tartiflette.io/docs/api/engine
 sdl = os.path.dirname(os.path.abspath(__file__)) + "/sdl"
-app = TartifletteApp(sdl=sdl, path="", graphiql=DEBUG)
+app = TartifletteApp(sdl=sdl, path="/", graphiql=DEBUG)
