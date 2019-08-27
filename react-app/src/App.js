@@ -119,7 +119,7 @@ class App extends Component {
 
           <a
             className="App-link"
-            href="https://github.com/bocadilloproject/bocadillo"
+            href="https://bocadilloproject.github.io"
             target="_blank"
             rel="noopener noreferrer"
           >
