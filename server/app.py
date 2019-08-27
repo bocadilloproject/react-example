@@ -14,7 +14,7 @@ async def index(req, res):
 
 
 @app.route("/api/message")
-async def api(req, res):
+async def get_message(req, res):
     now = time.strftime("%I:%M:%S %p")
     message = f"Hello from the Bocadillo server! The time is {now}."
     res.json = {"message": message}

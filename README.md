@@ -16,7 +16,7 @@ First clone this repository, then install dependencies.
 Let's install the Python dependencies first. You might want to do this inside a virtual environment.
 
 ```bash
-pip install bocadillo
+pip install -r requirements.txt
 ```
 
 Next, install the JavaScript dependencies:
