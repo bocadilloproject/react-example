@@ -11,7 +11,7 @@ import { ApolloProvider } from "react-apollo";
 
 // see https://github.com/apollographql/react-apollo
 const client = new ApolloClient({
-  link: new HttpLink({ uri: "/graphql" }),
+  link: new HttpLink({ uri: "/" }),
   cache: new InMemoryCache()
 });
 

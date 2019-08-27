@@ -6,11 +6,11 @@ from . import settings
 
 
 app = App()
-app.mount("/graphql", graphql_app)
+app.mount("/", graphql_app)
+app.on("startup", graphql_app.startup)
 templates = Templates(app, directory=settings.TEMPLATES_DIR)
 
 
 @app.route("/")
 async def index(req, res):
     res.html = await templates.render("index.html")
-
