@@ -1,0 +1,3 @@
+bocadillo==0.18.*
+tartiflette==0.12.*
+tartiflette-starlette==0.5.*
